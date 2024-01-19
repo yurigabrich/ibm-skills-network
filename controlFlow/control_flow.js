@@ -1,10 +1,16 @@
+// Variables
 let isLoggedIn = true;
+let isAuthenticated = true;
 let userRole = "admin";
 let userType = "subscriber";
+
 let userMessage;
 let accessLevel;
 let userCategory;
 
+let authenticationStatus = isAuthenticated ? "Authenticated" : "Not authenticated";
+
+// Conditions
 if (isLoggedIn) {
     if (userRole === "admin") {
         userMessage = "Welcome, Admin!";
@@ -42,3 +48,6 @@ switch (userType) {
 }
 
 console.log("User Category:", userCategory);
+
+console.log("Authentication Status:", authenticationStatus);
+
