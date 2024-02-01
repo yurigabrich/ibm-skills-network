@@ -1,32 +1,55 @@
 let books = [];
 
-function addBook() {
+function saveBook(index='') {
     const bookName = document.getElementById('bookName').value;
     const authorName = document.getElementById('authorName').value;
     const bookDescription = document.getElementById('bookDescription').value;
     const pagesNumber = parseInt(document.getElementById('pagesNumber').value);
-    
-    if (bookName && authorName && bookDescription && !isNaN(pagesNumber)) {
-        const book = {
-            name: bookName,
-            authorName: authorName,
-            bookDescription: bookDescription,
-            pagesNumber: pagesNumber
-        };
-        books.push(book);
+
+    if (!(bookName && authorName && bookDescription && !isNaN(pagesNumber))) {
+        alert('Please fill in all fields correctly.');
+    } else {
+        if (index !== '') {
+            updateBook(index, bookName, authorName, bookDescription, pagesNumber);
+        } else {
+            addBook(bookName, authorName, bookDescription, pagesNumber);
+        }
         showBooks();
         clearInputs();
-    } else {
-        alert('Please fill in all fields correctly.');
     }
 }
 
-function editBook() {
-
+function addBook(bookName, authorName, bookDescription, pagesNumber) {
+    books.push({
+        name: bookName,
+        authorName: authorName,
+        bookDescription: bookDescription,
+        pagesNumber: pagesNumber
+    });
 }
 
-function deleteBook() {
+function updateBook(index, bookName, authorName, bookDescription, pagesNumber) {
+    books[index] = {
+        name: bookName,
+        authorName: authorName,
+        bookDescription: bookDescription,
+        pagesNumber: pagesNumber
+    };
+    document.getElementById('btn_save').innerText = "Add Book";
+    document.getElementById('btn_save').onclick = function () { saveBook(); };
+}
 
+function editBook(index) {
+    document.getElementById('bookName').value = books[index].name;
+    document.getElementById('authorName').value = books[index].authorName;
+    document.getElementById('bookDescription').value = books[index].bookDescription;
+    document.getElementById('pagesNumber').value = books[index].pagesNumber;
+    document.getElementById('btn_save').innerText = "Save Book";
+    document.getElementById('btn_save').onclick = function () { saveBook(index); };
+}
+
+function deleteBook(index) {
+    // books.del(index);
 }
 
 function showBooks() {
