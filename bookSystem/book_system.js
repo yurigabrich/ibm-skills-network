@@ -49,7 +49,8 @@ function editBook(index) {
 }
 
 function deleteBook(index) {
-    // books.del(index);
+    books.splice(index, 1);
+    showBooks();
 }
 
 function showBooks() {
