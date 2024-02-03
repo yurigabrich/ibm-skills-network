@@ -1,3 +1,4 @@
+var button = document.getElementById("btn_save");
 let books = [];
 
 function saveBook(index='') {
@@ -35,8 +36,10 @@ function updateBook(index, bookName, authorName, bookDescription, pagesNumber) {
         bookDescription: bookDescription,
         pagesNumber: pagesNumber
     };
-    document.getElementById('btn_save').innerText = "Add Book";
-    document.getElementById('btn_save').onclick = function () { saveBook(); };
+
+    // Change the button behaviour
+    button.innerText = "Add Book";
+    button.onclick = function () { saveBook(); };
 }
 
 function editBook(index) {
@@ -44,8 +47,10 @@ function editBook(index) {
     document.getElementById('authorName').value = books[index].authorName;
     document.getElementById('bookDescription').value = books[index].bookDescription;
     document.getElementById('pagesNumber').value = books[index].pagesNumber;
-    document.getElementById('btn_save').innerText = "Save Book";
-    document.getElementById('btn_save').onclick = function () { saveBook(index); };
+    
+    // Change the button behaviour
+    button.innerText = "Save Book";
+    button.onclick = function () { saveBook(index); };
 }
 
 function deleteBook(index) {
