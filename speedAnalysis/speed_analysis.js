@@ -40,8 +40,9 @@ function endTest() {
     // Display the results
     var outputDiv = document.getElementById("output");
     outputDiv.innerHTML =   "<h2>Typing Test Results:</h2>" +
-                            "<p>Words Typed: " + typedWords + "</p>" +
-                            "<p>Time Elapsed: " + timeElapsed.toFixed(2) + " seconds</p>" +
+                            "<p>Number of characters typed: " + userTypedText.length + "</p>" +
+                            "<p>Number of words typed: " + typedWords + "</p>" +
+                            "<p>Time elapsed: " + timeElapsed.toFixed(2) + " seconds</p>" +
                             "<p>Words Per Minute (WPM): " + wpm + "</p>";
     
     // Reset the button
